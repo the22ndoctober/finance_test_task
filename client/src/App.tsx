@@ -1,15 +1,17 @@
-import React from "react";
-import Container from "./components/container/Container";
+import React from "react"
+import Container from "@mui/material/Container"
+import Box from "@mui/material/Box"
+import Navigation from "./components/header/Navigation"
 
 function App() {
-  const a = 11;
-
   return (
-    <div className="App">
-      <Container />
-      sosi yaica
-    </div>
-  );
+    <>
+      <Navigation />
+      <Container maxWidth="lg">
+        <Box>Bitch</Box>
+      </Container>
+    </>
+  )
 }
 
-export default App;
+export default App
