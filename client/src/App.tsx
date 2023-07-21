@@ -5,6 +5,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles"
 import CssBaseline from "@mui/material/CssBaseline"
 import themes from "./themes/themes"
 import MainContainer from "./components/container/MainContainer"
+import { PaletteMode } from "@mui/material"
 
 function App() {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)")
@@ -12,11 +13,17 @@ function App() {
     createTheme(themes(prefersDarkMode ? "dark" : "light")),
   )
 
-  // useEffect(() => {
+  useEffect(() => {
+    const userLocalTheme: PaletteMode =
+      localStorage.getItem("theme") || theme.palette.mode
+    if (userLocalTheme !== theme.palette.mode) {
+      setTheme(createTheme(themes(userLocalTheme)))
+    }
+  }, [])
 
-  //     localStorage.setItem("theme", theme.palette.mode)
-
-  // }, [theme, setTheme])
+  useEffect(() => {
+    localStorage.setItem("theme", theme.palette.mode)
+  }, [theme])
 
   return (
     <ThemeProvider theme={theme}>
