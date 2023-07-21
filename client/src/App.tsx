@@ -1,6 +1,4 @@
-import React, { useState } from "react"
-import Container from "@mui/material/Container"
-import Box from "@mui/material/Box"
+import React, { useState, useEffect } from "react"
 import Navigation from "./components/header/Navigation"
 import useMediaQuery from "@mui/material/useMediaQuery"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
@@ -14,6 +12,12 @@ function App() {
     createTheme(themes(prefersDarkMode ? "dark" : "light")),
   )
 
+  // useEffect(() => {
+
+  //     localStorage.setItem("theme", theme.palette.mode)
+
+  // }, [theme, setTheme])
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -24,6 +28,7 @@ function App() {
               themes(state.palette.mode === "light" ? "dark" : "light"),
             ),
           )
+          console.log(theme.palette.mode)
         }}
       />
       <MainContainer />
